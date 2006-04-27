@@ -1,5 +1,5 @@
 #
-# $Id: Trie.pm,v 0.1 2006/04/27 04:03:06 dankogai Exp dankogai $
+# $Id: Trie.pm,v 0.2 2006/04/27 05:24:40 dankogai Exp dankogai $
 #
 
 package Regexp::Trie;
@@ -7,7 +7,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 0.1 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%02d", q$Revision: 0.2 $ =~ /(\d+)/g;
 
 # use overload q("") => sub { shift->regexp };
 

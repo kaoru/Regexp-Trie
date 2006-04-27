@@ -1,5 +1,5 @@
 #
-# $Id: 01-dict.t,v 0.1 2006/04/27 04:01:27 dankogai Exp dankogai $
+# $Id: 01-dict.t,v 0.1 2006/04/27 04:01:27 dankogai Exp $
 #
 BEGIN {
     if (@ARGV) {

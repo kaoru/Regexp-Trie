@@ -4,10 +4,10 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     NAME              => 'Regexp::Trie',
-    VERSION_FROM      => 'Regexp/Trie.pm', # finds $VERSION
+    VERSION_FROM      => 'lib/Regexp/Trie.pm', # finds $VERSION
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'Regexp/Trie.pm', # retrieve abstract from module
+      (ABSTRACT_FROM  => 'lib/Regexp/Trie.pm', # retrieve abstract from module
        AUTHOR         => 'Dan Kogai <dankogai@dan.co.jp>') : ()),
 );
 

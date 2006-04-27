@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 #
-# $Id: dict2rx.pl,v 0.1 2006/04/27 04:01:27 dankogai Exp dankogai $
+# $Id: dict2rx.pl,v 0.1 2006/04/27 04:01:27 dankogai Exp $
 #
 use strict;
 use warnings;
