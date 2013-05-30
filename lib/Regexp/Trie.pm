@@ -49,6 +49,19 @@ sub _regexp{
 sub regexp{ my $str = shift->_regexp; qr/$str/ }
 sub regexp_string { shift->_regexp; }
 
+sub regexp_with_modifiers {
+    my $self = shift;
+    my $mods = shift;
+
+    my $re_string = $self->_regexp;
+    my $re_obj = eval "qr/$re_string/$mods;";
+    if ($@) {
+        die $@;
+    }
+
+    return $re_obj;
+}
+
 1;
 __END__
 # Below is stub documentation for your module. You'd better edit it!
@@ -70,6 +83,10 @@ Regexp::Trie - builds trie-ized regexp
 
   print $rt->regexp_string, "\n";
   # foo(?:bar|xar|zap?)
+
+  print $rt->regexp_with_modifiers('i'), "\n";
+  # (?^i:foo(?:bar|xar|zap?))
+  # [ or (?i-xsm:foo(?:bar|xar|zap?)) before Perl 5.14 ]
 
 =head1 DESCRIPTION
 
