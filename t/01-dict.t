@@ -9,7 +9,7 @@ BEGIN {
     }
     if ( !-f 't/_dict.rx' ) {
         print qq(1..0 # Skip: _dict.rx not found.\n),
-          qq(# "$0 /usr/share/dict/words" to prepare the test\n);
+          qq(# "$^X $0 /usr/share/dict/words" to prepare the test\n);
         exit 0;
     }
 }
@@ -26,7 +26,7 @@ print "# loading t/_dict.rx ... ";
 my $rx = do 't/_dict.rx';
 $time2load = time() - $time2load;
 print "done. took $time2load seconds.\n";
-open my $dict, "<:raw", "t/dict" or die "$!";
+open my $dict, "<:raw", "t/_dict" or die "$!";
 while ( my $line = <$dict> ) {
     chomp $line;
     ok( $line =~ /^$rx$/, $line );
