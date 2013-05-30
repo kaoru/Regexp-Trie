@@ -64,7 +64,12 @@ Regexp::Trie - builds trie-ized regexp
   for (qw/foobar fooxar foozap fooza/){
     $rt->add($_);
   }
-  print $rt->regexp, "\n" # (?-xism:foo(?:bar|xar|zap?))
+  print $rt->regexp, "\n";
+  # (?^:foo(?:bar|xar|zap?))
+  # [ or (?-xism:foo(?:bar|xar|zap?)) before Perl 5.14 ]
+
+  print $rt->regexp_string, "\n";
+  # foo(?:bar|xar|zap?)
 
 =head1 DESCRIPTION
 
