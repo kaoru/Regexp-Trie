@@ -47,6 +47,7 @@ sub _regexp{
     return $result;
 }
 sub regexp{ my $str = shift->_regexp; qr/$str/ }
+sub regexp_string { shift->_regexp; }
 
 1;
 __END__
