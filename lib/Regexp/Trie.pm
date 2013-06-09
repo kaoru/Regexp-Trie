@@ -103,10 +103,13 @@ control, use those instead.
 
 =head1 TIPS
 
-See t/dict2rx.pl to find how to convert a big dictionary into a single
-regexp that can be later loaded as:
+A good trick is to convert a big dictionary into a single regexp that can be
+later loaded as:
 
   my $rx = do 'dict.rx';
+
+See examples/dict/create_dictionary.pl and examples/dict/use_dictionary.pl for
+a fuller example.
 
 =head2 EXPORT
 
