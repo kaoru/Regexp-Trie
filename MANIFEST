@@ -1,9 +1,14 @@
 Changes
-MANIFEST
-Makefile.PL
-README
+examples/dict/create_dictionary.pl
+examples/dict/use_dictionary.pl
 lib/Regexp/Trie.pm
+Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
 t/00-load.t
+t/01-basics.t
 t/01-dict.t
+t/02-pod-example.t
+t/03-dict.t
 t/dict2rx.pl
-META.yml                                 Module meta-data (added by MakeMaker)
