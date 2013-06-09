@@ -29,13 +29,13 @@ my @tests = (
 plan tests => scalar @tests;
 
 for my $test (@tests) {
-    my $rt = Regexp::Trie->new;
-    $rt->add($_) for @{ $test->{input} };
+    my $trie = Regexp::Trie->new;
+    $trie->add($_) for @{ $test->{input} };
 
     my $msg = sprintf("%s => %s",
         join(",", @{ $test->{input} }),
         $test->{expected}
     );
 
-    is $rt->regexp, $test->{expected}, $msg;
+    is $trie->regexp, $test->{expected}, $msg;
 }

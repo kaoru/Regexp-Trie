@@ -11,18 +11,18 @@ if (!$fh_words) {
     exit 0;
 }
 
-my $rt = Regexp::Trie->new;
+my $trie = Regexp::Trie->new;
 
 my $word_count = 0;
 while (my $word = readline $fh_words) {
     chomp $word;
-    $rt->add($word);
+    $trie->add($word);
     $word_count++;
 }
 
 plan tests => 1 + $word_count;
 
-my $re = $rt->regexp;
+my $re = $trie->regexp;
 ok $re, 'created trie with all words in /usr/share/dict/words';
 
 $fh_words->seek(0, 0);

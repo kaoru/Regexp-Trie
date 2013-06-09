@@ -3,11 +3,20 @@ NAME
 
 SYNOPSIS
       use Regexp::Trie;
-      my $rt = Regexp::Trie->new;
-      for (qw/foobar fooxar foozap fooza/){
-        $rt->add($_);
-      }
-      print $rt->regexp, "\n" # (?-xism:foo(?:bar|xar|zap?))
+
+      my $trie = Regexp::Trie->new;
+      $trie->add($_) for (qw/foobar fooxar foozap fooza/);
+
+      print $trie->regexp, "\n";
+      # (?^:foo(?:bar|xar|zap?))
+      # [ or (?-xism:foo(?:bar|xar|zap?)) before Perl 5.14 ]
+
+      print $trie->regexp_string, "\n";
+      # foo(?:bar|xar|zap?)
+
+      print $trie->regexp_with_modifiers('i'), "\n";
+      # (?^i:foo(?:bar|xar|zap?))
+      # [ or (?i-xsm:foo(?:bar|xar|zap?)) before Perl 5.14 ]
 
 DESCRIPTION
     This module is a faster but simpler version of Regexp::Assemble or
@@ -21,11 +30,17 @@ DESCRIPTION
     Regexp::Assemble and Regexp::Optimizer. If you need more minute control,
     use those instead.
 
+    To read more about tries see Trie on Wikipedia
+    <http://en.wikipedia.org/wiki/Trie>
+
 TIPS
-    See t/dict2rx.pl to find how to convert a big dictionary into a single
-    regexp that can be later loaded as:
+    A good trick is to convert a big dictionary into a single regexp that
+    can be later loaded as:
 
       my $rx = do 'dict.rx';
+
+    See examples/dict/create_dictionary.pl and
+    examples/dict/use_dictionary.pl for a fuller example.
 
   EXPORT
     None.
@@ -34,7 +49,10 @@ SEE ALSO
     Regexp::Optimizer, Regexp::Assemble, Regex::PreSuf
 
 AUTHOR
-    Dan Kogai, <dankogai@dan.co.jp>
+    Original implementation - Dan Kogai, <dankogai@dan.co.jp>
+
+    regexp_with_string, regexp_with_modifiers, more tests and updated
+    documentation - Alex Balhatchet, <kaoru@slackwise.net>
 
 COPYRIGHT AND LICENSE
     Copyright (C) 2006 by Dan Kogai

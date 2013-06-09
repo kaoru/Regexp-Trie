@@ -1,15 +1,11 @@
-#
-# $Id: Trie.pm,v 0.2 2006/04/27 05:24:40 dankogai Exp dankogai $
-#
-
 package Regexp::Trie;
-use 5.008001;
+
 use strict;
 use warnings;
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 0.2 $ =~ /(\d+)/g;
+use 5.008001;
 
-# use overload q("") => sub { shift->regexp };
+our $VERSION = 0.02;
 
 sub new{ bless {} => shift }
 sub add{
@@ -63,9 +59,8 @@ sub regexp_with_modifiers {
 }
 
 1;
-__END__
-# Below is stub documentation for your module. You'd better edit it!
 
+__END__
 =head1 NAME
 
 Regexp::Trie - builds trie-ized regexp
@@ -73,18 +68,18 @@ Regexp::Trie - builds trie-ized regexp
 =head1 SYNOPSIS
 
   use Regexp::Trie;
-  my $rt = Regexp::Trie->new;
-  for (qw/foobar fooxar foozap fooza/){
-    $rt->add($_);
-  }
-  print $rt->regexp, "\n";
+
+  my $trie = Regexp::Trie->new;
+  $trie->add($_) for (qw/foobar fooxar foozap fooza/);
+
+  print $trie->regexp, "\n";
   # (?^:foo(?:bar|xar|zap?))
   # [ or (?-xism:foo(?:bar|xar|zap?)) before Perl 5.14 ]
 
-  print $rt->regexp_string, "\n";
+  print $trie->regexp_string, "\n";
   # foo(?:bar|xar|zap?)
 
-  print $rt->regexp_with_modifiers('i'), "\n";
+  print $trie->regexp_with_modifiers('i'), "\n";
   # (?^i:foo(?:bar|xar|zap?))
   # [ or (?i-xsm:foo(?:bar|xar|zap?)) before Perl 5.14 ]
 
@@ -100,6 +95,8 @@ followed by b".
 I wrote this module because I needed something faster than
 L<Regexp::Assemble> and L<Regexp::Optimizer>.  If you need more minute
 control, use those instead.
+
+To read more about tries see L<Trie on Wikipedia|http://en.wikipedia.org/wiki/Trie>
 
 =head1 TIPS
 
@@ -121,7 +118,9 @@ L<Regexp::Optimizer>,  L<Regexp::Assemble>, L<Regex::PreSuf>
 
 =head1 AUTHOR
 
-Dan Kogai, E<lt>dankogai@dan.co.jpE<gt>
+Original implementation - Dan Kogai, E<lt>dankogai@dan.co.jpE<gt>
+
+regexp_with_string, regexp_with_modifiers, more tests and updated documentation - Alex Balhatchet, E<lt>kaoru@slackwise.netE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
