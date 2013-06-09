@@ -13,12 +13,14 @@ if (!$fh_words) {
 
 my $rt = Regexp::Trie->new;
 
-ok $rt, 'created new empty trie object';
-
+my $word_count = 0;
 while (my $word = readline $fh_words) {
     chomp $word;
     $rt->add($word);
+    $word_count++;
 }
+
+plan tests => 1 + $word_count;
 
 my $re = $rt->regexp;
 ok $re, 'created trie with all words in /usr/share/dict/words';
@@ -31,5 +33,3 @@ while (my $word = readline $fh_words) {
 }
 
 close $fh_words;
-
-done_testing();
