@@ -3,8 +3,6 @@
 use strict;
 use warnings;
 
-use Regexp::Trie;
-
 #
 # $ ./examples/dict/use_dictionary.pl dict.rx banana
 # match! 'banana' is in the dictionary.
